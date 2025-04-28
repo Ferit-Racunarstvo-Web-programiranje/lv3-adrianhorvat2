@@ -225,7 +225,8 @@ footer {
 
 #filteri select,
 #filteri input,
-#filteri button {
+#filteri button, #potvrdi-plan {
+    margin: 5px;
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
@@ -241,7 +242,7 @@ footer {
     width: 130px; 
 }
 
-#primijeni-filtere {
+#primijeni-filtere, #potvrdi-plan {
     background-color: #4CAF50; 
     color: white;
     border: none;
@@ -250,9 +251,31 @@ footer {
     max-width: 150px;
 }
 
-#primijeni-filtere:hover {
+#primijeni-filtere:hover, #potvrdi-plan:hover {
     background-color: #45a049; 
 }
 
+.button-add, .button-remove {
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  max-width: 150px;
+  border-radius: 5px;
+}
 
+.button-add {
+  background-color: #4CAF50; 
+}
 
+.button-add:hover {
+  background-color: #45a049; 
+}
+
+.button-remove {
+  background-color: #f44336; 
+}
+
+.button-remove:hover {
+  background-color: #e53935;
+}

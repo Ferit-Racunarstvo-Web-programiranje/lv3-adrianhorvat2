@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
     loadWeatherData();
 
     document.querySelector('#primijeni-filtere').addEventListener('click', showFilteredTable);
+
+    document.querySelector('#potvrdi-plan').addEventListener('click', confirmPlan);
+
+    updatePlanVisibility();
 });
 
 async function getDataFromCSV() {
@@ -43,7 +47,7 @@ async function getDataFromCSV() {
 function showTable(weatherData) {
     const tbody = document.querySelector('#vremenska-tablica');
     tbody.innerHTML = ''; 
-
+    
     for (const data of weatherData) {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -55,7 +59,7 @@ function showTable(weatherData) {
             <td>${data.season}</td>
             <td>${data.location}</td>
             <td>${data.weather_type}</td>
-            <td><button onClick="toggleAddToPlan('${data.id}', this)">Add</button></td>
+            <td><button class="button-add" onClick="toggleAddToPlan('${data.id}', this)">Dodaj</button></td>
         `;
         tbody.appendChild(row);
     }
@@ -82,11 +86,79 @@ function toggleAddToPlan(dataID, button) {
     const isInPlan = plan.includes(dataID);
 
     if (!isInPlan) {
-        plan.push(dataID); 
+        plan.push(dataID);
+        addToPlan(dataID);
+        button.innerText = "Remove";
+        button.classList.remove('button-add');
+        button.classList.add('button-remove'); 
     } else {
         const index = plan.indexOf(dataID);
-        plan.splice(index, 1);  
+        plan.splice(index, 1);
+        removeFromPlan(dataID);
+        button.innerText = "Add";
+        button.classList.remove('button-remove');
+        button.classList.add('button-add');
     }
 
-    button.innerText = plan.includes(dataID) ? "Remove" : "Add";
+    button.innerText = plan.includes(dataID) ? "Ukloni" : "Dodaj";
+
+    updatePlanVisibility();
+}
+
+function addToPlan(dataID) {
+    const tbody = document.querySelector('#vremenska-tablica-plan');
+
+    const data = window.weatherData.find(d => d.id == dataID);
+
+    const row = document.createElement('tr');
+    row.setAttribute('data-id', data.id);
+    row.innerHTML = `
+        <td>${data.id}</td>
+        <td>${data.temperature} °C</td>
+        <td>${data.season}</td>
+        <td>${data.weather_type}</td>
+    `;
+
+    tbody.appendChild(row);
+}
+
+function removeFromPlan(dataID) {
+    const tbody = document.querySelector('#vremenska-tablica-plan');
+    const row = tbody.querySelector(`tr[data-id="${dataID}"]`);
+    if (row) {
+        row.remove();
+    }
+}
+
+function confirmPlan() {
+
+    const allButtons = document.querySelectorAll('#vremenska-tablica button');
+    allButtons.forEach(button => {
+        button.innerText = "Dodaj";
+        button.classList.remove('button-remove');
+        button.classList.add('button-add');
+    });
+
+    alert(`Uspješno ste isplanirali ${plan.length} dana za svoje aktivnosti na otvorenom!`);
+
+    tbody = document.querySelector('#vremenska-tablica-plan');
+    tbody.innerHTML = '';
+
+    plan = [];
+
+    updatePlanVisibility();
+}
+
+function updatePlanVisibility() {
+    const aside = document.querySelector('aside');
+    const table = aside.querySelector('table');
+    const button = aside.querySelector('button');
+
+    if (plan.length === 0) {
+        table.style.display = 'none';
+        button.style.display = 'none';
+    } else {
+        table.style.display = 'table';
+        button.style.display = 'inline-block';
+    }
 }

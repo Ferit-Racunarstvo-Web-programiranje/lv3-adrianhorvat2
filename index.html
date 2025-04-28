@@ -9,13 +9,13 @@
 		<!--dodati meta tag bitan za stranicu-->
 		<!--dodati link za css dokumente -->
 		<link rel="stylesheet" href="style.css">
-		<title>Vremenska prognoza</title> <!--promijeniti odgovarajući tekst na stranici
+		<title>Planiranje aktivnosti</title> <!--promijeniti odgovarajući tekst na stranici
 		ovo je samo predložak-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 	</head>
 	<body>
 		<header>
-		<h1>Dobrodosli na moju web stranicu</h1>
+		<h1>Isplaniraj aktivnost prema vremenskim uvjetima</h1>
 		</header>
 		<!-- <header>
        <nav aria-labelledby="primarna-navigacija">
@@ -94,28 +94,29 @@
 					</tr>
 					<tbody id="vremenska-tablica-plan"></tbody>
 				</table>
+				<button id="potvrdi-plan">Potvrdi plan</button>
 			</aside>
 		</div>
 
 		<section> <!-- dodati neke od obilježja za ARIA-->
 			<div id="filteri">
 				<select id="filter-season">
-				<option value="">Choose Season</option>
-				<option value="Spring">Spring</option>
-				<option value="Summer">Summer</option>
-				<option value="Winter">Winter</option>
-				<option value="Autumun">Autumun</option>
+				<option value="">Sezona</option>
+				<option value="Spring">Proljeće</option>
+				<option value="Summer">Ljeto</option>
+				<option value="Winter">Zima</option>
+				<option value="Autumun">Jesen</option>
 				</select>
 								
 				<select id="filter-weather">
-				<option value="">Choose Weather</option>
-				<option value="Sunny">Sunny</option>
-				<option value="Cloudy">Cloudy</option>
-				<option value="Rainy">Rainy</option>
+				<option value="">Vrijeme</option>
+				<option value="Sunny">Sunčano</option>
+				<option value="Cloudy">Oblačno</option>
+				<option value="Rainy">Kišovito</option>
 				</select>
 
-				<input type="number" id="filter-temp-min" placeholder="Temperature from">
-				<input type="number" id="filter-temp-max" placeholder="Temperature to">
+				<input type="number" id="filter-temp-min" placeholder="Temperatura od">
+				<input type="number" id="filter-temp-max" placeholder="Temperatura do">
 				
 				<button id="primijeni-filtere">Filtriraj</button>
 			</div>
