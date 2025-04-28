@@ -1,0 +1,258 @@
+/* Opći stilovi */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header i navigacija */
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+  }
+  
+  nav {
+    font-family: monospace;
+  }
+  
+  ul {
+    background: gray;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+  
+  li {
+    color: #fff;
+    background: gray;
+    display: block;
+    float: left;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+  }
+    
+  li a {
+    color: #fff;
+  }
+  
+  li:hover,
+  li:focus-within {
+    background: rgb(170, 169, 169);
+    cursor: pointer;
+  }
+  
+  li:focus-within a {
+    outline: none;
+  }
+  
+  ul li ul {
+    background: gray;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+  }
+  
+  ul li:hover > ul,
+  ul li:focus-within > ul,
+  ul li ul:hover,
+  ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block
+  }
+  
+  ul li ul li {
+    clear: both;
+    width: 100%;
+  }
+
+/* Sekcije */
+.content {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox za podatke */
+.data-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Flexbox analiza sekcija */
+.analysis-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap; /* wrap */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analysis-box {
+    background: #e3e3e3;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+}
+
+/* Flexbox za kontakt formu */
+.form-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+input{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    background: #222;
+    color: white;
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+  .data-container {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  table, aside {
+      width: 100%;
+      margin: 20px;
+      min-width: unset;
+  }
+  
+  .analysis-flex {
+      flex-direction: column;
+      align-items: center;
+  }
+  .nav-menu {
+      flex-direction: column;
+      text-align: center;
+  }
+  .form-flex input, .form-flex button {
+      width: 100%;
+  }
+}
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  aside img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .data-container {
+    display: flex;
+    flex-wrap: nowrap; 
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px ;
+  }
+  
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    width: 65%;
+    flex-shrink: 1;
+    overflow-x: auto;
+    display: block; 
+  }
+  
+  
+  aside {
+    width: 30%;
+    min-width: 250px;
+    flex-shrink: 0; 
+    margin-left: 20px;
+  }
+
+#filteri {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
+#filteri select,
+#filteri input,
+#filteri button {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#filteri select {
+    width: 150px; /* Širina za select elemente */
+}
+
+#filter-temp-min,
+#filter-temp-max {
+    width: 130px; 
+}
+
+#primijeni-filtere {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    max-width: 150px;
+}
+
+#primijeni-filtere:hover {
+    background-color: #45a049; 
+}
+
+
+
